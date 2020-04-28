@@ -2,7 +2,7 @@
 
 ## Overview
 
-Steps and some simple scripts to get you through a complete deployment of an image with a Azure Shared Image Gallery.  Steps are also included to deploy the image from the SIG from both PowerShell and ARM.
+Steps and some simple scripts to get you through a complete deployment of an image with a Azure Shared Image Gallery.  Steps are also included to deploy the image from the SIG from both PowerShell and ARM Template.
 
 ## Detail Steps
 
@@ -14,7 +14,7 @@ Steps and some simple scripts to get you through a complete deployment of an ima
 
 1. Logon to the newly created VM and run ```sysprep``` from ```%windir%\system32\sysprep```
 
-1. Select these option
+1. Select these options:
 
     - System Cleanup Action: Enter System Out-of-Box Experience (OOBE) 
     - Generalize: CHECKED!
@@ -38,6 +38,11 @@ Steps and some simple scripts to get you through a complete deployment of an ima
 
 - This link was very helpful:  
   https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
+
+## Known Issues
+
+- It would be nice to be able to run Sysprep via the Azure Script Extension
+
 
 
 
