@@ -32,7 +32,7 @@ Steps and some simple scripts to get you through a complete deployment of an ima
 
 1. Test deployment of a VM from the SIG with PowerShell.  Update details and run ```DeployVMFromSIG.ps1```
 
-1. Test deployment of a VM from the SIG with ARM Template.  Update details in ```azuredeploy.parametrers.json``` and ```DeployVMFromSIGWithTemplate.ps1``` then Run ```DeployVMFromSIGWithTemplate.ps1```
+1. Test deployment of a VM from the SIG with ARM Template.  Update details in ```azuredeploy.parameters.json``` and ```DeployVMFromSIGWithTemplate.ps1``` then Run ```DeployVMFromSIGWithTemplate.ps1```
 
 ## Tips and Tricks
 
