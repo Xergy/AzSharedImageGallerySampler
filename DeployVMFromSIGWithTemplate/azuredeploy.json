@@ -26,10 +26,10 @@
           "description": "Size of your Virtual Machine."
         }
       },            
-      "dnsLabelPrefix": {
+      "VNetNamePrefix": {
         "type": "string",
         "metadata": {
-          "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+          "description": "VNet Name"
         }
       },
       "ImageReferenceId": {
@@ -40,13 +40,12 @@
       }
     },
     "variables": {
-      "nicName": "[concat(uniquestring(resourceGroup().id), 'myVMNic')]",
+      "nicName": "[concat(parameters('VMName'),'-nic')]",
       "addressPrefix": "10.0.0.0/16",
-      "subnetName": "Subnet",
+      "subnetName": "[concat(parameters('VNetNamePrefix'),'-subnet01')]",
       "subnetPrefix": "10.0.0.0/24",
-      "publicIPAddressName": "[concat(uniquestring(resourceGroup().id), 'myPublicIP')]",
-      "vmName": "[variables('publicIPAddressName')]",
-      "virtualNetworkName": "MyVNET",
+      "publicIPAddressName": "[concat(parameters('VMName'),'-',uniquestring(resourceGroup().id), '-pip')]",
+      "virtualNetworkName": "[concat(parameters('VNetNamePrefix'),'-vnet')]",
       "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
       "networkSecurityGroupName": "[concat(variables('subnetName'), '-nsg')]"
     },
@@ -59,7 +58,7 @@
         "properties": {
           "publicIPAllocationMethod": "Dynamic",
           "dnsSettings": {
-            "domainNameLabel": "[concat(uniquestring(resourceGroup().id), parameters('dnsLabelPrefix'))]"
+            "domainNameLabel": "[concat(variables('publicIPAddressName'))]"
           }
         }
       },
@@ -155,7 +154,7 @@
       },
       {
         "type": "Microsoft.Compute/virtualMachines",
-        "name": "[variables('vmName')]",
+        "name": "[parameters('vmName')]",
         "apiVersion": "2018-04-01",
         "location": "[resourceGroup().location]",
         "properties": {
@@ -163,7 +162,7 @@
             "vmSize": "[parameters('Size')]"
           },
           "osProfile": {
-            "computerName": "[variables('vmName')]",
+            "computerName": "[parameters('vmName')]",
             "adminUsername": "[parameters('adminUsername')]",
             "adminPassword": "[parameters('adminPassword')]"
           },
