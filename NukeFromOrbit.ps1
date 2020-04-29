@@ -7,7 +7,7 @@ Write-Host "`nType ""BreakGlass"" to remove these Resource Group, or Ctrl-C to E
 $HostInput = $Null
 $HostInput = Read-Host "Final Answer" 
 If ($HostInput -ne "BreakGlass" ) {
-    Write-Host "Existing..."
+    Write-Host "Exiting..."
     exit
 } 
 
