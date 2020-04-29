@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repo contains steps and some simple scripts to get you through an "end to end" deployment of an Azure Shared Image Gallery.  Steps are also included to deploy an image from the SIG with both PowerShell and an ARM template.  **The entire process, from bare metal, take about 35 minutes.**
+This repo contains steps and some simple scripts to get you through an "end to end" deployment of an Azure Shared Image Gallery.  Steps are also included to deploy an image from the SIG with both PowerShell and an ARM template.  **The entire process, from bare metal, takes about 35 minutes.**
 
 ## Process Summary
 

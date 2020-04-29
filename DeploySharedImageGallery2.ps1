@@ -54,3 +54,5 @@ New-AzGalleryImageVersion `
    -PublishingProfileEndOfLifeDate '2030-01-01' `
    
 $imageVersion = get-azGalleryImageVersion -Name $GalleryImageVersionName -ResourceGroupName $resourceGroup.ResourceGroupName -GalleryName $gallery.Name -GalleryImageDefinitionName $galleryImage.Name
+
+
