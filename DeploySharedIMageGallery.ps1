@@ -7,10 +7,6 @@ New-AzResourceGroup `
 
 $resourceGroup = Get-AzResourceGroup -Name $RGName 
 
-$managedImage = Get-AzImage `
-   -ImageName "windows-server-2019-base" `
-   -ResourceGroupName "acme-dev-eus-sigt-01-rg"
-
 $GalleryName ='acmedevsig'
 
 New-AzGallery `
@@ -41,7 +37,11 @@ $region2 = @{Name='EastUs';ReplicaCount=1}
 #$targetRegions = @($region1,$region2)
 $targetRegions = @($region2)
 
-$GalleryImageVersionName = '1.0.0' 
+$GalleryImageVersionName = '1.0.1' 
+
+$managedImage = Get-AzImage `
+   -ImageName "windows-server-2019-base" `
+   -ResourceGroupName "acme-dev-eus-sigt-01-rg"
 
 New-AzGalleryImageVersion `
    -GalleryImageDefinitionName $galleryImage.Name `
@@ -51,13 +51,6 @@ New-AzGalleryImageVersion `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
    -Source $managedImage.Id.ToString() `
-   -PublishingProfileEndOfLifeDate '2030-01-01' 
+   -PublishingProfileEndOfLifeDate '2030-01-01' `
    
 $imageVersion = get-azGalleryImageVersion -Name $GalleryImageVersionName -ResourceGroupName $resourceGroup.ResourceGroupName -GalleryName $gallery.Name -GalleryImageDefinitionName $galleryImage.Name
-
-# "Gallery" > config.txt
-# $gallery  | fl *  >> config.txt
-# "GalleryImage " >> config.txt
-# $galleryImage  | fl *  >> config.txt
-# "ImageVersion " >> config.txt
-# $ImageVersion  | fl *  >> config.txt

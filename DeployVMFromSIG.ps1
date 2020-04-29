@@ -30,10 +30,11 @@ $imageVersionId = "/subscriptions/3ba3ebad-7974-4e80-a019-3a61e0b7fa91/resourceG
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D4_v3 | `
     Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
     Set-AzVMSourceImage -id $imageVersionId  | `
-    Add-AzVMNetworkInterface -Id $nic.Id
+    Add-AzVMNetworkInterface -Id $nic.Id | `
+    Set-AzVMBootDiagnostic -Disable
+
 
 # Create a virtual machine
-New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig 
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig -Verbose
 
-# New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig -AsJob
 
