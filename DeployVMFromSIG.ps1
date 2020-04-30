@@ -26,13 +26,12 @@ $nic = New-AzNetworkInterface -Name "$($vmName)-nic" -ResourceGroupName $resourc
 
 $imageVersionId = "/subscriptions/3ba3ebad-7974-4e80-a019-3a61e0b7fa91/resourceGroups/acme-dev-eus-sig-rg/providers/Microsoft.Compute/galleries/acmedevsig/images/windows-server-2019-base/versions/1.0.0"
 
-  # Create a virtual machine configuration using $imageVersion.Id to specify the shared image
+# Create a virtual machine configuration using SIG Version Resource Id ($imageVersionId) to specify the shared image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D4_v3 | `
     Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
     Set-AzVMSourceImage -id $imageVersionId  | `
     Add-AzVMNetworkInterface -Id $nic.Id | `
     Set-AzVMBootDiagnostic -Disable
-
 
 # Create a virtual machine
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig -Verbose

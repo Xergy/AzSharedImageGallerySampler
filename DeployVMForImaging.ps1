@@ -24,15 +24,15 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $l
 $nic = New-AzNetworkInterface -Name "$($vmName)-nic" -ResourceGroupName $resourceGroup -Location $location `
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking
 
-  # Create a virtual machine configuration using $imageVersion.Id to specify the shared image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D4_v3 | `
     Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
     Set-AzVMSourceImage -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2019-Datacenter" -Version "latest" | `
-    Add-AzVMNetworkInterface -Id $nic.Id
+    Add-AzVMNetworkInterface -Id $nic.Id | `
+    Set-AzVMBootDiagnostic -Disable
 
 # Create a virtual machine
-New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig 
-# New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig -AsJob
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig -Verbose
+
 
 
 
