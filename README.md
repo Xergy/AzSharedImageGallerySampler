@@ -50,7 +50,7 @@ This repo contains steps and some simple scripts to get you through an "end to e
 
 1. Test deployment of a VM from the SIG with PowerShell.  Update environment details and execute ```DeployVMFromSIG.ps1```
 
-   > **ProTip #56:** The RG names contain "sigt" - different from the Gallery RG.  "t" for "testing". RG names also include an instance number i.e. "02" or "03".  If you are testing your own variation of these scripts and templates, change the instance number and deploy a whole new RG every deployment test.  It's faster to deploy new, than delete and recreate.  Once you are done testing, clean up all the old RGs at once.
+   > **ProTip #56:** The VM deployment RG names contain "sigt" - different from the Gallery RG.  "t" is for VM deployment "testing". VM deployment RG names also include an instance number i.e. "02" or "03".  If you are testing your own variation of these scripts and templates, change the instance number and deploy a whole new RG every deployment test.  It's faster to deploy new, than delete and recreate.  Once you are done testing, clean up all the old RGs at once with ```NukeFromOrbit.ps1```.
 
 1. Test deployment of a VM from the SIG with ARM Template.  Update environment details in ```azuredeploy.parameters.json``` and ```DeployVMFromSIGWithTemplate.ps1``` then execute ```DeployVMFromSIGWithTemplate.ps1```
 
