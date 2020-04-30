@@ -112,7 +112,7 @@ This repo contains steps and some simple scripts to get you through an "end to e
 
 ## Next Steps
 
-- Add an additional replica in a new region for you image version.  Deploy to that region. 
+- Add an additional replica in a new region for your image version.  Deploy a VM to that region. 
 
 
 
