@@ -103,6 +103,7 @@ This repo contains steps and some simple scripts to get you through an "end to e
 ## Next Steps
 
 - It would be nice to be able to execute Sysprep via the Azure Script Extension
+- Create new script to script to add additional regions
 
 
 
